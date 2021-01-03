@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Sweet Lavender';
-  src: url("/fonts/SweetLavender-eZ2lp.ttf") format("truetype");
+  src: url("../fonts/SweetLavender-eZ2lp.ttf") format("truetype");
   display: swap;
 }
 
