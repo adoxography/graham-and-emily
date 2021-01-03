@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Graham &amp; Emily</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin=""
+        />
+        <link rel="stylesheet" type="text/css" href="/css/app.css" />
+
+
+        <script
+            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""
+        ></script>
+
+        <script src="/js/app.js" defer></script>
+    </head>
+    <body>
+        <nav class="navigation-container">
+            <div class="hamburger-container">
+                <div class="hamburger"></div>
+            </div>
+
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="#" class="navigation__link">
+                        Home
+                    </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#rsvp" class="navigation__link">
+                        RSVP
+                    </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#" class="navigation__link">
+                        Registry
+                    </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#" class="navigation__link">
+                        Menu
+                    </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#map" class="navigation__link">
+                        Directions
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="header">
+            <div class="main-container">
+                <div class="splash-container">
+                    <img src="/images/splash.jpg" alt="Graham and Emily" class="splash" />
+                    <div class="splash-overlay"></div>
+                    <svg class="splash-extra-bubbles" viewBox="0 0 351 725" xmlns="http://www.w3.org/2000/svg">
+                        <g class="circle-container">
+                            <circle cx="246.5" cy="271.5" r="54.5" />
+                        </g>
+                        <g class="circle-container">
+                            <circle cx="125" cy="591" r="37" />
+                        </g>
+                        <g class="circle-container">
+                            <circle cx="157.5" cy="337.5" r="69.5" />
+                        </g>
+                        <g class="circle-container">
+                            <circle cx="169.5" cy="493.5" r="57.5" />
+                        </g>
+                        <g class="circle-container">
+                            <circle cx="78.5" cy="245.5" r="28.5" />
+                        </g>
+                        <g class="circle-container">
+                            <circle cx="175" cy="153" r="43" />
+                        </g>
+                    </svg>
+                </div>
+
+                <main class="main-content">
+                    <header class="header-card">
+                        <h1 class="header-card__title">
+                            Graham &amp; Emily
+                        </h1>
+
+                        <time datetime="2022-06-11" class="header-card__subtitle">
+                            June 11<sup>th</sup>, 2022
+                        </time>
+
+                        <p class="event-detail">
+                            <a class="event-detail__location" onclick="ceremonyMarker.openPopup()" href="#map">Ceremony @ The Forks</a>
+                            <span class="event-detail__sep"></span>
+                            <time>10:00am</time>
+                        </p>
+                        <p class="event-detail">
+                            <a class="event-detail__location" onclick="receptionMarker.openPopup()" href="#map">Reception @ Inn at the Forks</a>
+                            <span class="event-detail__sep"></span>
+                            <time>11:00am</time>
+                        </p>
+                    </header>
+
+                    <a href="#rsvp" class="button button--rsvp">
+                        RSVP
+                    </a>
+                </main>
+            </div>
+        </section>
+
+        <section id="rsvp" class="rsvp-section">
+            <div class="rsvp-container">
+                <h2 class="title title--rsvp">
+                    RSVP
+                </h2>
+
+                <form class="form form--rsvp" id="rsvp-form">
+                    <div class="form__field">
+                        <label for="name" class="form__label">
+                            Name
+                        </label>
+                        <input class="form__input" id="name" name="name" type="text">
+                    </div>
+
+                    <div class="form__field">
+                        <label for="email" class="form__label">
+                            Email
+                        </label>
+                        <input class="form__input" id="email" name="email" type="email">
+                    </div>
+
+                    <div class="form__field">
+                        <label for="requests" class="form__label">
+                            Special requests
+                        </label>
+                        <textarea class="form__textarea" id="requests" name="requests"></textarea>
+                    </div>
+
+                    <div class="form__field form__field--right">
+                        <button type="submit" class="button button--submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="map-container">
+                <div id="map" class="map"></div>
+            </div>
+        </section>
+
+        <svg viewBox="0 0 381 698" xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0">
+            <defs>
+                <circle id="c1" cx="153.979" cy="228.697" r="92.06" />
+                <circle id="c2" cx="267.822" cy="190.722" r="92.06"/>
+                <circle id="c3" cx="216.039" cy="355.279" r="75.949"/>
+                <circle id="c4" cx="122.552" cy="518.684" r="80.552"/>
+                <circle id="c5" cx="113.047" cy="398.432" r="59.263"/>
+                <circle id="c6" cx="60.688" cy="327.661" r="48.331"/>
+                <circle id="c7" cx="344.347" cy="262.644" r="33.947"/>
+                <circle id="c8" cx="319.03" cy="380.02" r="59.263"/>
+                <circle id="c9" cx="254.588" cy="430.652" r="78.826"/>
+                <circle id="c10" cx="194.393" cy="573.345" r="50.057"/>
+                <circle id="c11" cx="142.966" cy="93.484" r="50.057"/>
+                <circle id="c12" cx="218.915" cy="31.344" r="29.344"/>
+                <circle id="c13" cx="163.68" cy="666.555" r="29.344"/>
+                <circle id="c14" cx="267.247" cy="618.224" r="18.987"/>
+                <circle id="c15" cx="309.824" cy="522.712" r="38.55"/>
+
+                <clipPath id="clippath" transform="scale(0.002324672 0.001432665)" clipPathUnits="objectBoundingBox">
+                    <use class="circle-container" xlink:href="#c1"></use>
+                    <use class="circle-container" xlink:href="#c2"></use>
+                    <use class="circle-container" xlink:href="#c3"></use>
+                    <use class="circle-container" xlink:href="#c4"></use>
+                    <use class="circle-container" xlink:href="#c5"></use>
+                    <use class="circle-container" xlink:href="#c6"></use>
+                    <use class="circle-container" xlink:href="#c7"></use>
+                    <use class="circle-container" xlink:href="#c8"></use>
+                    <use class="circle-container" xlink:href="#c9"></use>
+                    <use class="circle-container" xlink:href="#c10"></use>
+                    <use class="circle-container" xlink:href="#c11"></use>
+                    <use class="circle-container" xlink:href="#c12"></use>
+                    <use class="circle-container" xlink:href="#c13"></use>
+                    <use class="circle-container" xlink:href="#c14"></use>
+                    <use class="circle-container" xlink:href="#c15"></use>
+                </clipPath>
+            </defs>
+        </svg>
+
+        <script> </script>
+    </body>
+</html>
